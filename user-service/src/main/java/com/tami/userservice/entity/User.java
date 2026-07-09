@@ -1,10 +1,6 @@
 package com.tami.userservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,10 +18,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
     private String surname;
+
+    @Column(nullable = false, unique = true)
     private String email;
+
     private String address;
-    private boolean alerting;
-    private double energyAlertingThreshold;
+
+    @Column(nullable = false)
+    private boolean alerting = false;
+
+    @Column(name = "energy_alerting_threshold", nullable = false)
+    private double energyAlertingThreshold = 0.0;
 }
