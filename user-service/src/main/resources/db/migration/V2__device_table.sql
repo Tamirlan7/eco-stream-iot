@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS devices
+(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    location VARCHAR(255),
+    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+)
