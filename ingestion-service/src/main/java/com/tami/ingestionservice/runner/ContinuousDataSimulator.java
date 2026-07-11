@@ -34,27 +34,27 @@ public class ContinuousDataSimulator implements CommandLineRunner {
     }
 
 
-    @Scheduled(fixedRateString = "${simulation.interval-ms}")
-    public void sendMockData() {
-        for (int i = 0; i < requestsPerInterval; i++) {
-            EnergyUsageDto dto = EnergyUsageDto.builder()
-                    .deviceId(random.nextLong(1, 6))
-                    .energyConsumed(Math.round(random.nextDouble(0.0, 2.0) * 100.0) / 100.0)
-                    .timestamp(LocalDateTime.now()
-                            .atZone(ZoneId.systemDefault()).toInstant())
-                    .build();
-
-            try {
-                HttpHeaders headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_JSON);
-
-                HttpEntity<EnergyUsageDto> request = new HttpEntity<>(dto, headers);
-                restTemplate.postForEntity(ingestionEndpoint, request, Void.class);
-
-                log.info ("Sent mock data: {}", dto);
-            } catch (Exception e) {
-                log.error("Failed to send data: {}", e.getMessage());
-            }
-        }
-    }
+//    @Scheduled(fixedRateString = "${simulation.interval-ms}")
+//    public void sendMockData() {
+//        for (int i = 0; i < requestsPerInterval; i++) {
+//            EnergyUsageDto dto = EnergyUsageDto.builder()
+//                    .deviceId(random.nextLong(1, 6))
+//                    .energyConsumed(Math.round(random.nextDouble(0.0, 2.0) * 100.0) / 100.0)
+//                    .timestamp(LocalDateTime.now()
+//                            .atZone(ZoneId.systemDefault()).toInstant())
+//                    .build();
+//
+//            try {
+//                HttpHeaders headers = new HttpHeaders();
+//                headers.setContentType(MediaType.APPLICATION_JSON);
+//
+//                HttpEntity<EnergyUsageDto> request = new HttpEntity<>(dto, headers);
+//                restTemplate.postForEntity(ingestionEndpoint, request, Void.class);
+//
+//                log.info ("Sent mock data: {}", dto);
+//            } catch (Exception e) {
+//                log.error("Failed to send data: {}", e.getMessage());
+//            }
+//        }
+//    }
 }
