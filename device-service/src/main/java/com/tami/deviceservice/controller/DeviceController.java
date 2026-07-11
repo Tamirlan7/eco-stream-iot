@@ -1,6 +1,6 @@
 package com.tami.deviceservice.controller;
 import com.tami.deviceservice.dto.DeviceDto;
-import com.tami.deviceservice.serivce.DeviceService;
+import com.tami.deviceservice.service.DeviceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

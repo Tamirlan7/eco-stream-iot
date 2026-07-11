@@ -1,4 +1,4 @@
-package com.tami.deviceservice.serivce;
+package com.tami.deviceservice.service;
 
 import com.tami.deviceservice.dto.DeviceDto;
 import com.tami.deviceservice.entity.Device;
