@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1/device")
 public class DeviceController {
@@ -25,6 +27,12 @@ public class DeviceController {
     public ResponseEntity<DeviceDto> getDeviceById(@PathVariable Long id) {
         DeviceDto device = deviceService.getDeviceById(id);
         return ResponseEntity.ok(device);
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<DeviceDto>> getDevicesByUserId(@PathVariable Long userId) {
+        return ResponseEntity
+                .ok(deviceService.getDevicesByUserId(userId));
     }
 
     @PostMapping("/create")

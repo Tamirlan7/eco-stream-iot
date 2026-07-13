@@ -6,6 +6,8 @@ import com.tami.deviceservice.exception.DeviceNotFoundException;
 import com.tami.deviceservice.repository.DeviceRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DeviceService {
 
@@ -65,4 +67,15 @@ public class DeviceService {
         return dto;
     }
 
+    public List<DeviceDto> getDevicesByUserId(Long userId) {
+        return deviceRepository.findAllByUserId(userId)
+                .stream()
+                .map(device -> DeviceDto.builder()
+                        .id(device.getId())
+                        .name(device.getName())
+                        .type(device.getType())
+                        .location(device.getLocation())
+                        .userId(userId).build())
+                .toList();
+    }
 }
