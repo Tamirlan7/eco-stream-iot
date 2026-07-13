@@ -1,4 +1,4 @@
-package com.tami.usageservcie;
+package com.tami.usageservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

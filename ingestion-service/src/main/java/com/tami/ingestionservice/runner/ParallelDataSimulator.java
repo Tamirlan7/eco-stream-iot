@@ -68,7 +68,7 @@ public class ParallelDataSimulator implements CommandLineRunner {
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         HttpEntity<EnergyUsageDto> request = new HttpEntity<>(dto, headers);
                         restTemplate.postForEntity(ingestionEndpoint, request, Void.class);
-                        log.info("Sent mock data: " + dto);
+//                        log.info("Sent mock data: " + dto);
                     } catch (Exception e) {
                         log.error("Failed to send data: " + e.getMessage());
                     }

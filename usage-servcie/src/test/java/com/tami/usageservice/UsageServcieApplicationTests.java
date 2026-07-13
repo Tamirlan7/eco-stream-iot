@@ -1,4 +1,4 @@
-package com.tami.usageservcie;
+package com.tami.usageservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

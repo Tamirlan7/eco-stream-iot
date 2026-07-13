@@ -1,4 +1,4 @@
-package com.tami.usageservcie.kafka.event;
+package com.tami.usageservice.kafka.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
