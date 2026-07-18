@@ -10,14 +10,16 @@ import static org.springframework.cloud.gateway.server.mvc.filter.BeforeFilterFu
 import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouterFunctions.route;
 import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
 
+
 @Configuration
-public class UserServiceRoutes {
+public class IngestionServiceRoute {
 
     @Bean
-    public RouterFunction<ServerResponse> userRoute() {
-        return route("user-service")
-                .route(RequestPredicates.path("/api/v1/user/**"), http())
-                .before(uri("http://localhost:8080"))
+    public RouterFunction<ServerResponse> ingestionRoute() {
+        return route("ingestion-service")
+                .route(RequestPredicates.path("/api/v1/ingestion/**"), http())
+                .before(uri("http://localhost:8082"))
                 .build();
     }
+
 }

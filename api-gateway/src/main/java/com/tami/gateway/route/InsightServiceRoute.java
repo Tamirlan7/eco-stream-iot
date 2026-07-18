@@ -11,13 +11,14 @@ import static org.springframework.cloud.gateway.server.mvc.handler.GatewayRouter
 import static org.springframework.cloud.gateway.server.mvc.handler.HandlerFunctions.http;
 
 @Configuration
-public class UserServiceRoutes {
+public class InsightServiceRoute {
 
     @Bean
-    public RouterFunction<ServerResponse> userRoute() {
-        return route("user-service")
-                .route(RequestPredicates.path("/api/v1/user/**"), http())
-                .before(uri("http://localhost:8080"))
+    public RouterFunction<ServerResponse> insightRoute() {
+        return route("insight-route")
+                .route(RequestPredicates.path("/api/v1/insight/**"), http())
+                .before(uri("http://localhost:8083"))
                 .build();
     }
+
 }
