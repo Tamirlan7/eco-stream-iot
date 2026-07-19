@@ -19,7 +19,7 @@ public class DeviceServiceRoute {
 
     @Bean
     public RouterFunction<ServerResponse> deviceRoute() {
-        return route("insight-route")
+        return route("device-route")
                 .route(RequestPredicates.path("/api/v1/device/**"), http())
                 .before(uri("http://localhost:8081"))
                 .filter(CircuitBreakerFilterFunctions.circuitBreaker(
@@ -30,7 +30,7 @@ public class DeviceServiceRoute {
     }
 
     @Bean
-    public RouterFunction<ServerResponse> insightFallbackRoute() {
+    public RouterFunction<ServerResponse> deviceFallbackRoute() {
         return route("deviceFallback")
                 .route(RequestPredicates.path("/deviceFallback"),
                         request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)

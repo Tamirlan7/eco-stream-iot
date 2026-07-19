@@ -13,12 +13,17 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Value("${keycloak.auth.jwk-set-uri}")
-    public String jwkSetUri;
+    private String jwkSetUri;
+
+    @Value("${security.excluded.urls}")
+    private String[] excludedUrls;
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authorizeRequests ->
-                        authorizeRequests.anyRequest().authenticated())
+                        authorizeRequests
+                                .requestMatchers(excludedUrls).permitAll()
+                                .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth ->
                         oauth.jwt(Customizer.withDefaults()))
                 .build();

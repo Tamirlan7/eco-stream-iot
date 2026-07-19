@@ -32,7 +32,7 @@ public class IngestionServiceRoute {
 
 
     @Bean
-    public RouterFunction<ServerResponse> insightFallbackRoute() {
+    public RouterFunction<ServerResponse> ingestionFallbackRoute() {
         return route("ingestionFallback")
                 .route(RequestPredicates.path("/ingestionFallback"),
                         request -> ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE)
